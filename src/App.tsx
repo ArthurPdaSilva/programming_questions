@@ -1,5 +1,15 @@
-import Background from './components/Background';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { Background, GameBox, GameTitle } from './components';
+import theme from './theme';
 
 export default function App() {
-  return <Background>H1</Background>;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Background>
+        <GameTitle />
+        <GameBox />
+      </Background>
+    </ThemeProvider>
+  );
 }

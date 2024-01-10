@@ -1,7 +1,10 @@
-export interface BackgroundProps {
-  children: React.ReactNode;
-}
+import { Box } from '@mui/material';
+import BackgroundProps from './backgroundProps';
 
 export default function Background({ children }: BackgroundProps) {
-  return <div style={{ width: '100vw', height: '100vh', background: '#0C0F0A' }}>{children}</div>;
+  return (
+    <Box height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+      {children}
+    </Box>
+  );
 }
