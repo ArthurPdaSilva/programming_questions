@@ -1,11 +1,16 @@
 import { FormLabel } from '@mui/material';
+import { useQuestionContext } from '../../../../hooks/useQuestionContext';
 import theme from '../../../../theme';
-import QuestionTitleProps from './QuestionTitleProps';
 
-export default function QuestionTitle({ title }: QuestionTitleProps) {
+export default function QuestionTitle() {
+  const { getCurrentQuestion } = useQuestionContext();
+
   return (
-    <FormLabel id="questions_label" sx={{ color: theme.palette.primary.main, fontSize: '2rem', textAlign: 'center' }}>
-      {title}
+    <FormLabel
+      id="questions_label"
+      sx={{ color: theme.palette.primary.main, fontSize: '2.5rem', textAlign: 'center', marginBottom: '2rem' }}
+    >
+      {getCurrentQuestion().question}
     </FormLabel>
   );
 }

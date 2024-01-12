@@ -1,34 +1,18 @@
 import React, { ReactNode, createContext, useState } from 'react';
-import { MarkedAlternativeType, QuestionType } from './QuestionsType';
-
-interface QuestionContextType {
-  isChangingQuestion: boolean;
-  selectedValue: string;
-  questions: QuestionType[];
-  markedAlternatives: MarkedAlternativeType[];
-  setMarkedAlternatives: React.Dispatch<React.SetStateAction<MarkedAlternativeType[]>>;
-  setSelectedValue: React.Dispatch<React.SetStateAction<string>>;
-  goToNextQuestion: () => void;
-  goToPreviousQuestion: () => void;
-  getCurrentQuestion: () => QuestionType;
-  isFirstQuestion: () => boolean;
-  isLastQuestion: () => boolean;
-}
+import questions from '../db';
+import { QuestionContextType } from './QuestionsType';
 
 export const QuestionContext = createContext<QuestionContextType | undefined>(undefined);
 
 interface QuestionContextProviderProps {
   children: ReactNode;
-  initialQuestions: QuestionType[];
 }
 
-export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = ({ children, initialQuestions }) => {
+export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = ({ children }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedValue, setSelectedValue] = useState(initialQuestions[currentQuestionIndex].options[0].value);
-  const [isChangingQuestion, setIsChangingQuestion] = React.useState(true);
-  const [markedAlternatives, setMarkedAlternatives] = useState<MarkedAlternativeType[]>([
-    { questionId: initialQuestions[0].id, answer: initialQuestions[0].options[0].value },
-  ]);
+  const [selectedQuestionValue, setSelectedQuestionValue] = useState(questions[currentQuestionIndex].options[0].value);
+  const [isChangingQuestion, setIsChangingQuestion] = useState(true);
+  console.log(selectedQuestionValue);
 
   const goToNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -48,29 +32,18 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
   };
 
   const getCurrentQuestion = () => {
-    return initialQuestions[currentQuestionIndex];
-  };
-
-  const isFirstQuestion = () => {
-    return currentQuestionIndex === 0;
-  };
-
-  const isLastQuestion = () => {
-    return currentQuestionIndex === initialQuestions.length - 1;
+    return questions[currentQuestionIndex];
   };
 
   const contextValue: QuestionContextType = {
     isChangingQuestion,
-    selectedValue,
-    markedAlternatives,
-    questions: initialQuestions,
-    setSelectedValue,
-    setMarkedAlternatives,
+    selectedQuestionValue,
+    questions,
     goToNextQuestion,
     goToPreviousQuestion,
+    setSelectedQuestionValue,
+    setCurrentQuestionIndex,
     getCurrentQuestion,
-    isFirstQuestion,
-    isLastQuestion,
   };
 
   return <QuestionContext.Provider value={contextValue}>{children}</QuestionContext.Provider>;

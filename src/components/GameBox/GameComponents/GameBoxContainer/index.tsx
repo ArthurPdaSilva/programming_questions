@@ -11,8 +11,8 @@ export default function GameBoxContainer({ children }: GameBoxContainerProps) {
       <Box
         display="flex"
         flexDirection="column"
-        maxWidth={600}
-        maxHeight={400}
+        width={700}
+        maxHeight={600}
         border={1}
         borderColor={theme.palette.primary.main}
         borderRadius={5}

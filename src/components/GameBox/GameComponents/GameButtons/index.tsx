@@ -1,44 +1,43 @@
 import { Button, ButtonGroup } from '@mui/material';
+import { memo } from 'react';
 import { useQuestionContext } from '../../../../hooks/useQuestionContext';
+import GameButtonsProps from './GameButtonsProps';
 
-export default function GameButtons() {
-  const {
-    isFirstQuestion,
-    isLastQuestion,
-    goToNextQuestion,
-    goToPreviousQuestion,
-    selectedValue,
-    getCurrentQuestion,
-    markedAlternatives,
-    setMarkedAlternatives,
-  } = useQuestionContext();
+function GameButtons({ markedAlternatives, setMarkedAlternatives }: GameButtonsProps) {
+  const { selectedQuestionValue, questions, goToNextQuestion, goToPreviousQuestion, getCurrentQuestion } =
+    useQuestionContext();
   const currentQuestion = getCurrentQuestion();
+
+  const isFirstQuestion = () => {
+    return currentQuestion.id === 0;
+  };
+
+  const isLastQuestion = () => {
+    return currentQuestion.id === questions.length - 1;
+  };
 
   const isPossibleToGoToPreviousQuestion = () => {
     if (isFirstQuestion()) {
       return;
     } else {
+      editingMarkedAlternative();
       goToPreviousQuestion();
     }
   };
 
   const isPossibleToGoToNextQuestion = () => {
-    if (isLastQuestion()) {
-      return;
-    } else {
-      if (haveQuestionMarked()) {
-        const newMarkedAlternatives = markedAlternatives.map((alternative) => {
-          if (alternative.questionId === currentQuestion.id) {
-            return { questionId: currentQuestion.id, answer: selectedValue };
-          }
-          return alternative;
-        });
-        setMarkedAlternatives(newMarkedAlternatives);
-      } else {
-        setMarkedAlternatives([...markedAlternatives, { questionId: currentQuestion.id, answer: selectedValue }]);
-      }
-      console.log(markedAlternatives);
+    editingMarkedAlternative();
+    if (!isLastQuestion()) {
       goToNextQuestion();
+    }
+  };
+
+  const editingMarkedAlternative = () => {
+    if (haveQuestionMarked()) {
+      const newMarkedAlternatives = returnMarkedAlternativesEdited();
+      setMarkedAlternatives(newMarkedAlternatives);
+    } else {
+      setMarkedAlternatives([...markedAlternatives, { questionId: currentQuestion.id, answer: selectedQuestionValue }]);
     }
   };
 
@@ -46,15 +45,30 @@ export default function GameButtons() {
     return markedAlternatives.some((alternative) => alternative.questionId === currentQuestion.id);
   };
 
+  const returnMarkedAlternativesEdited = () => {
+    return markedAlternatives.map((alternative) => {
+      if (alternative.questionId === currentQuestion.id) {
+        return { questionId: currentQuestion.id, answer: selectedQuestionValue };
+      }
+      return alternative;
+    });
+  };
+
   return (
     <ButtonGroup
-      sx={{ display: 'flex', justifyContent: 'center' }}
+      sx={{ display: 'flex', justifyContent: 'center', boxShadow: 'none' }}
       size="large"
       variant="contained"
       aria-label="Disabled elevation buttons"
     >
-      <Button onClick={isPossibleToGoToPreviousQuestion}>Voltar</Button>
-      <Button onClick={isPossibleToGoToNextQuestion}>{isLastQuestion() ? 'Finalizar' : 'Avançar'}</Button>
+      <Button onClick={isPossibleToGoToPreviousQuestion} sx={{ fontSize: '1.2rem' }}>
+        Voltar
+      </Button>
+      <Button onClick={isPossibleToGoToNextQuestion} sx={{ fontSize: '1.2rem' }}>
+        {isLastQuestion() ? 'Finalizar' : 'Avançar'}
+      </Button>
     </ButtonGroup>
   );
 }
+
+export default memo(GameButtons);
