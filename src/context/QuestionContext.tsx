@@ -12,7 +12,6 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedQuestionValue, setSelectedQuestionValue] = useState(questions[currentQuestionIndex].options[0].value);
   const [isChangingQuestion, setIsChangingQuestion] = useState(true);
-  console.log(selectedQuestionValue);
 
   const goToNextQuestion = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
