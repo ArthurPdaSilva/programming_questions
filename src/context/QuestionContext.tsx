@@ -13,16 +13,6 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
   const [selectedQuestionValue, setSelectedQuestionValue] = useState(questions[currentQuestionIndex].options[0].value);
   const [isChangingQuestion, setIsChangingQuestion] = useState(true);
 
-  const goToNextQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-    changeQuestionProgramming();
-  };
-
-  const goToPreviousQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
-    changeQuestionProgramming();
-  };
-
   const changeQuestionProgramming = () => {
     setIsChangingQuestion(false);
     setTimeout(() => {
@@ -38,11 +28,10 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
     isChangingQuestion,
     selectedQuestionValue,
     questions,
-    goToNextQuestion,
-    goToPreviousQuestion,
     setSelectedQuestionValue,
     setCurrentQuestionIndex,
     getCurrentQuestion,
+    changeQuestionProgramming,
   };
 
   return <QuestionContext.Provider value={contextValue}>{children}</QuestionContext.Provider>;

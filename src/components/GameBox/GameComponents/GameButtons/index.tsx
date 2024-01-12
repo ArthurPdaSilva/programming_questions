@@ -4,7 +4,7 @@ import { useQuestionContext } from '../../../../hooks/useQuestionContext';
 import GameButtonsProps from './GameButtonsProps';
 
 function GameButtons({ markedAlternatives, setMarkedAlternatives }: GameButtonsProps) {
-  const { selectedQuestionValue, questions, goToNextQuestion, goToPreviousQuestion, getCurrentQuestion } =
+  const { selectedQuestionValue, questions, setCurrentQuestionIndex, getCurrentQuestion, changeQuestionProgramming } =
     useQuestionContext();
   const currentQuestion = getCurrentQuestion();
 
@@ -16,10 +16,18 @@ function GameButtons({ markedAlternatives, setMarkedAlternatives }: GameButtonsP
     return currentQuestion.id === questions.length - 1;
   };
 
+  const goToNextQuestion = () => {
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+    changeQuestionProgramming();
+  };
+
+  const goToPreviousQuestion = () => {
+    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+    changeQuestionProgramming();
+  };
+
   const isPossibleToGoToPreviousQuestion = () => {
-    if (isFirstQuestion()) {
-      return;
-    } else {
+    if (!isFirstQuestion()) {
       editingMarkedAlternative();
       goToPreviousQuestion();
     }

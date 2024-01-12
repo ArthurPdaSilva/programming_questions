@@ -2,12 +2,15 @@ import { FormControl } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { MarkedAlternativeType } from '../../context/QuestionsType';
 import { useQuestionContext } from '../../hooks/useQuestionContext';
-import { GameBoxContainer, GameButtons } from './GameComponents';
+import { GameBoxContainer, GameButtons, GameModalWin } from './GameComponents';
+import GameModalFailed from './GameComponents/GameModalFailed';
 import { QuestionOptions, QuestionTitle } from './Question';
 
 export default function GameBox() {
-  const { questions } = useQuestionContext();
   const totalNumberOfPossibleWrongQuestions = 3;
+  const { questions } = useQuestionContext();
+  const [openModalWin, setOpenModalWin] = useState(false);
+  const [openModalFailed, setOpenModalFailed] = useState(false);
   const [markedAlternatives, setMarkedAlternatives] = useState<MarkedAlternativeType[]>([]);
 
   useEffect(() => {
@@ -23,7 +26,11 @@ export default function GameBox() {
     }
 
     if (isFinish(markedAlternatives)) {
-      isWinner();
+      if (isWinner()) {
+        setOpenModalWin(true);
+      } else {
+        setOpenModalFailed(true);
+      }
     }
 
     function isFinish(markedAlternatives: MarkedAlternativeType[]) {
@@ -39,12 +46,16 @@ export default function GameBox() {
   }
 
   return (
-    <GameBoxContainer>
-      <FormControl>
-        <QuestionTitle />
-        <QuestionOptions />
-        <GameButtons markedAlternatives={markedAlternatives} setMarkedAlternatives={setMarkedAlternatives} />
-      </FormControl>
-    </GameBoxContainer>
+    <>
+      <GameModalWin openModalWin={openModalWin} setOpenModalWin={setOpenModalWin} />
+      <GameModalFailed openModalFailed={openModalFailed} setOpenModalFailed={setOpenModalFailed} />
+      <GameBoxContainer>
+        <FormControl>
+          <QuestionTitle />
+          <QuestionOptions />
+          <GameButtons markedAlternatives={markedAlternatives} setMarkedAlternatives={setMarkedAlternatives} />
+        </FormControl>
+      </GameBoxContainer>
+    </>
   );
 }
