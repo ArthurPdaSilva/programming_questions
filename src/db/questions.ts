@@ -1,4 +1,6 @@
-const questions = [
+import { QuestionType } from '../context/QuestionsType';
+
+const questions: QuestionType[] = [
   {
     id: 0,
     question: 'Qual dos seguintes não é um tipo de dado primitivo em programação?',

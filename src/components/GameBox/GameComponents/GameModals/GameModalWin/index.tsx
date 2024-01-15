@@ -1,12 +1,13 @@
 import { Box, Modal, Typography } from '@mui/material';
-import theme from '../../../../theme';
-import GameModalWinProp from './GameModalWinProp';
+import theme from '../../../../../theme';
+import { GameModalProp } from '../GameModalProp';
+import CarouselComponent from './CarouselComponent';
 
-export default function GameModalWin({ openModalWin, setOpenModalWin }: GameModalWinProp) {
+export default function GameModalWin({ openModal, setOpenModal }: GameModalProp) {
   return (
     <Modal
-      open={openModalWin}
-      onClose={() => setOpenModalWin(false)}
+      open={openModal}
+      onClose={() => setOpenModal(false)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
@@ -14,10 +15,11 @@ export default function GameModalWin({ openModalWin, setOpenModalWin }: GameModa
       <Box
         sx={{ background: theme.palette.primary.main }}
         borderRadius={5}
-        width={1000}
-        height={600}
+        width="85%"
+        height="85%"
         display="flex"
         alignItems="center"
+        justifyContent="center"
         flexDirection="column"
         p={5}
       >
@@ -29,6 +31,7 @@ export default function GameModalWin({ openModalWin, setOpenModalWin }: GameModa
           estou te devendo isso há um tempo já, mas agora eu vou te pedir em namoro, você aceita? Eu te amo muitão e já
           estamos há mais de 6 meses juntos, então, vamos oficializar isso? ❤️❤️❤️
         </Typography>
+        <CarouselComponent />
       </Box>
     </Modal>
   );

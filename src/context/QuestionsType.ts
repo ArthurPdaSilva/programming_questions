@@ -16,9 +16,11 @@ export interface MarkedAlternativeType {
 }
 
 export interface QuestionContextType {
+  markedAlternatives: MarkedAlternativeType[];
   questions: QuestionType[];
   isChangingQuestion: boolean;
   selectedQuestionValue: string;
+  setMarkedAlternatives: React.Dispatch<React.SetStateAction<MarkedAlternativeType[]>>;
   setSelectedQuestionValue: React.Dispatch<React.SetStateAction<string>>;
   setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
   getCurrentQuestion: () => QuestionType;

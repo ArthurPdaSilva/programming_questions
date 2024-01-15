@@ -1,11 +1,17 @@
 import { Button, ButtonGroup } from '@mui/material';
 import { memo } from 'react';
 import { useQuestionContext } from '../../../../hooks/useQuestionContext';
-import GameButtonsProps from './GameButtonsProps';
 
-function GameButtons({ markedAlternatives, setMarkedAlternatives }: GameButtonsProps) {
-  const { selectedQuestionValue, questions, setCurrentQuestionIndex, getCurrentQuestion, changeQuestionProgramming } =
-    useQuestionContext();
+function GameButtons() {
+  const {
+    markedAlternatives,
+    selectedQuestionValue,
+    questions,
+    setMarkedAlternatives,
+    setCurrentQuestionIndex,
+    getCurrentQuestion,
+    changeQuestionProgramming,
+  } = useQuestionContext();
   const currentQuestion = getCurrentQuestion();
 
   const isFirstQuestion = () => {

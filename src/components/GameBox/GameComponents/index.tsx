@@ -1,5 +1,6 @@
 import GameBoxContainer from './GameBoxContainer';
 import GameButtons from './GameButtons';
-import GameModalWin from './GameModalWin';
+import GameModalFailed from './GameModals/GameModalFailed';
+import GameModalWin from './GameModals/GameModalWin';
 
-export { GameBoxContainer, GameButtons, GameModalWin };
+export { GameBoxContainer, GameButtons, GameModalFailed, GameModalWin };

@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useState } from 'react';
-import questions from '../db';
-import { QuestionContextType } from './QuestionsType';
+import questions from '../db/questions';
+import { MarkedAlternativeType, QuestionContextType } from './QuestionsType';
 
 export const QuestionContext = createContext<QuestionContextType | undefined>(undefined);
 
@@ -12,6 +12,7 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedQuestionValue, setSelectedQuestionValue] = useState(questions[currentQuestionIndex].options[0].value);
   const [isChangingQuestion, setIsChangingQuestion] = useState(true);
+  const [markedAlternatives, setMarkedAlternatives] = useState<MarkedAlternativeType[]>([]);
 
   const changeQuestionProgramming = () => {
     setIsChangingQuestion(false);
@@ -25,9 +26,11 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
   };
 
   const contextValue: QuestionContextType = {
+    markedAlternatives,
     isChangingQuestion,
     selectedQuestionValue,
     questions,
+    setMarkedAlternatives,
     setSelectedQuestionValue,
     setCurrentQuestionIndex,
     getCurrentQuestion,
