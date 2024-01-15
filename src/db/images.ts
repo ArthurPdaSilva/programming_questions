@@ -18,7 +18,7 @@ const images: ImageType[] = [
   },
   {
     id: 3,
-    title: 'Maça goxtosinha',
+    title: 'Maçã goxtosinha',
     link: 'src/assets/carousel_images/4.webp',
   },
   {
