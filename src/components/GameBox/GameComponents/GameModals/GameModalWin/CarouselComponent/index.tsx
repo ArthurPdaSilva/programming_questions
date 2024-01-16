@@ -8,11 +8,11 @@ export default function CarouselComponent() {
       <Typography color="secondary" variant="h3" component="h2" align="center">
         Nóize ❤️
       </Typography>
-      <ImageList sx={{ width: 1500, height: 450 }}>
+      <ImageList sx={{ width: 1100, height: 400 }}>
         {images.map((item) => {
           return (
             <ImageListItem key={item.id}>
-              <img srcSet={item.link} width={250} height={200} alt={item.title} loading="lazy" />
+              <img srcSet={item.link} alt={item.title} width={200} loading="lazy" />
               <ImageListItemBar
                 sx={{
                   background:

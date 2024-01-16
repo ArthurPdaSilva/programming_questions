@@ -1,5 +1,6 @@
 import { Box, Modal, Typography } from '@mui/material';
 import theme from '../../../../../theme';
+import AudioPlay from '../AudioPlay';
 import { GameModalProp } from '../GameModalProp';
 import CarouselComponent from './CarouselComponent';
 
@@ -16,7 +17,7 @@ export default function GameModalWin({ openModal, setOpenModal }: GameModalProp)
         sx={{ background: theme.palette.primary.main }}
         borderRadius={5}
         width="85%"
-        height="85%"
+        height="90%"
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -32,6 +33,7 @@ export default function GameModalWin({ openModal, setOpenModal }: GameModalProp)
           estamos há mais de 6 meses juntos, então, vamos oficializar isso? ❤️❤️❤️
         </Typography>
         <CarouselComponent />
+        <AudioPlay link="src/assets/modal_audios/CarelessWhisper-GeorgeMichael.mp3" />
       </Box>
     </Modal>
   );
