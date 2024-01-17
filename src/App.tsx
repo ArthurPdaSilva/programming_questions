@@ -1,7 +1,9 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Background, GameBox, GameTitle } from './components';
-import { QuestionContextProvider } from './context/QuestionContext';
-import theme from './theme';
+import GameBox from './domains/GameBox';
+import Background from './global/components/Background';
+import Title from './global/components/Title';
+import { QuestionContextProvider } from './global/context/QuestionContext';
+import theme from './global/theme';
 
 export default function App() {
   return (
@@ -9,7 +11,7 @@ export default function App() {
       <CssBaseline />
       <QuestionContextProvider>
         <Background>
-          <GameTitle />
+          <Title />
           <GameBox />
         </Background>
       </QuestionContextProvider>
