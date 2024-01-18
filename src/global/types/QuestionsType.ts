@@ -16,6 +16,7 @@ export interface MarkedAlternativeType {
 }
 
 export interface QuestionContextType {
+  totalNumberOfPossibleWrongQuestions: number;
   markedAlternatives: MarkedAlternativeType[];
   questions: QuestionType[];
   isChangingQuestion: boolean;

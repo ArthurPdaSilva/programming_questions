@@ -9,6 +9,7 @@ interface QuestionContextProviderProps {
 }
 
 export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = ({ children }) => {
+  const totalNumberOfPossibleWrongQuestions = 3;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedQuestionValue, setSelectedQuestionValue] = useState(questions[currentQuestionIndex].options[0].value);
   const [isChangingQuestion, setIsChangingQuestion] = useState(true);
@@ -26,6 +27,7 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
   };
 
   const contextValue: QuestionContextType = {
+    totalNumberOfPossibleWrongQuestions,
     markedAlternatives,
     isChangingQuestion,
     selectedQuestionValue,

@@ -2,14 +2,15 @@ import { FormControl } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useQuestionContext } from '../../global/hooks/useQuestionContext';
 import { MarkedAlternativeType } from '../../global/types/QuestionsType';
-import { GameBoxContainer, GameButtons, GameModalFailed, GameModalWin } from './features';
+import AudioPlay from './components/AudioPlay';
+import { GameBoxContainer, GameButtons, GameModalFailed, GameModalInit, GameModalWin } from './features';
 import { QuestionOptionsGroup, QuestionTitle } from './features/Question';
 
 export default function GameBox() {
-  const totalNumberOfPossibleWrongQuestions = 3;
-  const { questions, markedAlternatives } = useQuestionContext();
+  const { totalNumberOfPossibleWrongQuestions, questions, markedAlternatives } = useQuestionContext();
   const [openModalWin, setOpenModalWin] = useState(false);
   const [openModalFailed, setOpenModalFailed] = useState(false);
+  const [openModalInit, setOpenModalInit] = useState(markedAlternatives.length === 0);
 
   useEffect(() => {
     function isWinner() {
@@ -34,7 +35,7 @@ export default function GameBox() {
     function isFinish(markedAlternatives: MarkedAlternativeType[]) {
       return markedAlternatives.length === questions.length;
     }
-  }, [markedAlternatives, questions]);
+  }, [markedAlternatives, questions, totalNumberOfPossibleWrongQuestions]);
 
   function CheckingIsCorrectAnswer(
     markedAlternative: MarkedAlternativeType | undefined,
@@ -45,6 +46,7 @@ export default function GameBox() {
 
   return (
     <>
+      <GameModalInit openModal={openModalInit} setOpenModal={setOpenModalInit} />
       <GameModalWin openModal={openModalWin} setOpenModal={setOpenModalWin} />
       <GameModalFailed openModal={openModalFailed} setOpenModal={setOpenModalFailed} />
       <GameBoxContainer>
@@ -54,6 +56,7 @@ export default function GameBox() {
           <GameButtons />
         </FormControl>
       </GameBoxContainer>
+      <AudioPlay link="src/assets/audios/trilha.mp3" isControl={false} />
     </>
   );
 }
