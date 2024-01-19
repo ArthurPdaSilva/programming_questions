@@ -1,8 +1,8 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
-import { useQuestionContext } from '../../../../global/hooks/useQuestionContext';
-import { useTheme } from '../../../../global/hooks/useTheme';
-import AudioPlay from '../../components/AudioPlay';
-import { GameModalProp } from '../../types/GameModalProp';
+import { useQuestionContext } from '../../../../../global/hooks/useQuestionContext';
+import { useTheme } from '../../../../../global/hooks/useTheme';
+import AudioPlay from '../../../components/AudioPlay';
+import { GameModalProp } from '../../../types/GameModalProp';
 
 export default function GameModalFailed({ openModal, setOpenModal }: GameModalProp) {
   const { setMarkedAlternatives, setCurrentQuestionIndex } = useQuestionContext();

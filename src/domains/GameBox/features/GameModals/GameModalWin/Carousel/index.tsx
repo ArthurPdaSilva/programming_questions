@@ -1,5 +1,5 @@
 import { ImageList, ImageListItem, ImageListItemBar, Typography } from '@mui/material';
-import images from '../../../db/images';
+import images from '../../../../db/images';
 
 export default function Carousel() {
   return (

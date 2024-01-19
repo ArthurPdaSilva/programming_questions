@@ -1,7 +1,7 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
-import { useQuestionContext } from '../../../../global/hooks/useQuestionContext';
-import { useTheme } from '../../../../global/hooks/useTheme';
-import { GameModalProp } from '../../types/GameModalProp';
+import { useQuestionContext } from '../../../../../global/hooks/useQuestionContext';
+import { useTheme } from '../../../../../global/hooks/useTheme';
+import { GameModalProp } from '../../../types/GameModalProp';
 
 export default function GameModalInit({ openModal, setOpenModal }: GameModalProp) {
   const { totalNumberOfPossibleWrongQuestions } = useQuestionContext();

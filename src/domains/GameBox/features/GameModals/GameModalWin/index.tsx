@@ -1,8 +1,8 @@
 import { Box, Modal, Typography } from '@mui/material';
-import { useTheme } from '../../../../global/hooks/useTheme';
-import AudioPlay from '../../components/AudioPlay';
-import { GameModalProp } from '../../types/GameModalProp';
-import CarouselComponent from './Carousel';
+import { useTheme } from '../../../../../global/hooks/useTheme';
+import AudioPlay from '../../../components/AudioPlay';
+import { GameModalProp } from '../../../types/GameModalProp';
+import Carousel from './Carousel';
 
 export default function GameModalWin({ openModal, setOpenModal }: GameModalProp) {
   const { primaryColor } = useTheme();
@@ -34,7 +34,7 @@ export default function GameModalWin({ openModal, setOpenModal }: GameModalProp)
           estou te devendo isso há um tempo já, mas agora eu vou te pedir em namoro, você aceita? Eu te amo muitão e já
           estamos há mais de 6 meses juntos, então, vamos oficializar isso? ❤️❤️❤️
         </Typography>
-        <CarouselComponent />
+        <Carousel />
         <AudioPlay link="src/assets/audios/CarelessWhisper-GeorgeMichael.mp3" isControl />
       </Box>
     </Modal>
