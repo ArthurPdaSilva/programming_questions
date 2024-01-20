@@ -26,6 +26,10 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
     return questions[currentQuestionIndex];
   };
 
+  function isFinish() {
+    return markedAlternatives.length === questions.length;
+  }
+
   const contextValue: QuestionContextType = {
     totalNumberOfPossibleWrongQuestions,
     markedAlternatives,
@@ -37,6 +41,7 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
     setCurrentQuestionIndex,
     getCurrentQuestion,
     changeQuestionProgramming,
+    isFinish,
   };
 
   return <QuestionContext.Provider value={contextValue}>{children}</QuestionContext.Provider>;

@@ -6,7 +6,7 @@ import GameModalInit from './GameModalInit';
 import GameModalWin from './GameModalWin';
 
 export default function GameModals() {
-  const { totalNumberOfPossibleWrongQuestions, questions, markedAlternatives } = useQuestionContext();
+  const { totalNumberOfPossibleWrongQuestions, questions, markedAlternatives, isFinish } = useQuestionContext();
 
   const [openModalWin, setOpenModalWin] = useState(false);
   const [openModalFailed, setOpenModalFailed] = useState(false);
@@ -24,18 +24,14 @@ export default function GameModals() {
       return totalPoints > totalNumberOfPossibleWrongQuestions;
     }
 
-    if (isFinish(markedAlternatives)) {
+    if (isFinish()) {
       if (isWinner()) {
         setOpenModalWin(true);
       } else {
         setOpenModalFailed(true);
       }
     }
-
-    function isFinish(markedAlternatives: MarkedAlternativeType[]) {
-      return markedAlternatives.length === questions.length;
-    }
-  }, [markedAlternatives, questions, totalNumberOfPossibleWrongQuestions]);
+  }, [isFinish, markedAlternatives, questions, totalNumberOfPossibleWrongQuestions]);
 
   function CheckingIsCorrectAnswer(markedAlternative: MarkedAlternativeType | undefined, question: QuestionType) {
     return markedAlternative?.answer === question.correctAnswer;

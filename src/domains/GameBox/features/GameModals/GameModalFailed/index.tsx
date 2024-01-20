@@ -38,7 +38,7 @@ export default function GameModalFailed({ openModal, setOpenModal }: GameModalPr
         <Button color="secondary" variant="contained" sx={{ fontSize: '1.2rem' }} onClick={resetGame}>
           Tentar novamente clicando aqui (Ou fora do componente)
         </Button>
-        <AudioPlay link={iaePaiYouLose} isControl />
+        <AudioPlay link={iaePaiYouLose} />
       </Box>
     </Modal>
   );

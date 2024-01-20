@@ -36,7 +36,7 @@ export default function GameModalWin({ openModal, setOpenModal }: GameModalProp)
           estamos há mais de 6 meses juntos, então, vamos oficializar isso? ❤️❤️❤️
         </Typography>
         <Carousel />
-        <AudioPlay link={carelessWhisperGeorgeMichael} isControl />
+        <AudioPlay link={carelessWhisperGeorgeMichael} />
       </Box>
     </Modal>
   );

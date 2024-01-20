@@ -26,4 +26,5 @@ export interface QuestionContextType {
   setCurrentQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
   getCurrentQuestion: () => QuestionType;
   changeQuestionProgramming: () => void;
+  isFinish(): boolean;
 }
