@@ -15,16 +15,16 @@ export const QuestionContextProvider: React.FC<QuestionContextProviderProps> = (
   const [isChangingQuestion, setIsChangingQuestion] = useState(true);
   const [markedAlternatives, setMarkedAlternatives] = useState<MarkedAlternativeType[]>([]);
 
-  const changeQuestionProgramming = () => {
+  function changeQuestionProgramming() {
     setIsChangingQuestion(false);
     setTimeout(() => {
       setIsChangingQuestion(true);
     }, 700);
-  };
+  }
 
-  const getCurrentQuestion = () => {
+  function getCurrentQuestion() {
     return questions[currentQuestionIndex];
-  };
+  }
 
   function isFinish() {
     return markedAlternatives.length === questions.length;

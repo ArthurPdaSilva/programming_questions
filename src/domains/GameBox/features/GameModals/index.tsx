@@ -8,7 +8,7 @@ import GameModalWin from './GameModalWin';
 export default function GameModals() {
   const { totalNumberOfPossibleWrongQuestions, questions, markedAlternatives, isFinish } = useQuestionContext();
 
-  const [openModalWin, setOpenModalWin] = useState(false);
+  const [openModalWin, setOpenModalWin] = useState(true);
   const [openModalFailed, setOpenModalFailed] = useState(false);
   const [openModalInit, setOpenModalInit] = useState(markedAlternatives.length === 0);
 
