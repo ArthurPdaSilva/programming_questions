@@ -5,13 +5,10 @@ import { useQuestionContext } from '../../../../../global/hooks/useQuestionConte
 export default function AudioPlayBackground() {
   const { isFinish } = useQuestionContext();
 
-  {
-    isFinish() ? (
-      <></>
-    ) : (
-      <CardMedia component="audio" autoPlay>
-        <source src={trilha} type="audio/mpeg" />
-      </CardMedia>
-    );
-  }
+  if (isFinish()) return <></>;
+  return (
+    <CardMedia component="audio" autoPlay>
+      <source src={trilha} type="audio/mpeg" />
+    </CardMedia>
+  );
 }
