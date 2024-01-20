@@ -1,4 +1,5 @@
 import { Box, Button, Modal, Typography } from '@mui/material';
+import iaePaiYouLose from '../../../../../assets/audios/iaePaiYouLose.mp3';
 import { useQuestionContext } from '../../../../../global/hooks/useQuestionContext';
 import { useTheme } from '../../../../../global/hooks/useTheme';
 import AudioPlay from '../../../components/AudioPlay';
@@ -37,7 +38,7 @@ export default function GameModalFailed({ openModal, setOpenModal }: GameModalPr
         <Button color="secondary" variant="contained" sx={{ fontSize: '1.2rem' }} onClick={resetGame}>
           Tentar novamente clicando aqui (Ou fora do componente)
         </Button>
-        <AudioPlay link="src/assets/audios/iaepaiyoulose.m4a" isControl />
+        <AudioPlay link={iaePaiYouLose} isControl />
       </Box>
     </Modal>
   );

@@ -1,4 +1,5 @@
 import { Box, Modal, Typography } from '@mui/material';
+import carelessWhisperGeorgeMichael from '../../../../../assets/audios/carelessWhisperGeorgeMichael.mp3';
 import { useTheme } from '../../../../../global/hooks/useTheme';
 import AudioPlay from '../../../components/AudioPlay';
 import { GameModalProp } from '../../../types/GameModalProp';
@@ -35,7 +36,7 @@ export default function GameModalWin({ openModal, setOpenModal }: GameModalProp)
           estamos há mais de 6 meses juntos, então, vamos oficializar isso? ❤️❤️❤️
         </Typography>
         <Carousel />
-        <AudioPlay link="src/assets/audios/CarelessWhisper-GeorgeMichael.mp3" isControl />
+        <AudioPlay link={carelessWhisperGeorgeMichael} isControl />
       </Box>
     </Modal>
   );

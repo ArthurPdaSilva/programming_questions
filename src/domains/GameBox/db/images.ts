@@ -1,35 +1,41 @@
+import cherin from '../../../assets/images/cherin.webp';
+import deliciusApple from '../../../assets/images/deliciusApple.webp';
+import lindjos from '../../../assets/images/lindjos.webp';
+import noCamera from '../../../assets/images/noCamera.webp';
+import pokerFaceImage from '../../../assets/images/pokerFaceImage.webp';
+import sumePhoto from '../../../assets/images/sumePhoto.webp';
 import ImageType from '../types/ImageType';
 
 const images: ImageType[] = [
   {
     id: 0,
     title: '.-.',
-    link: 'src/assets/images/1.webp',
+    link: pokerFaceImage,
   },
   {
     id: 1,
     title: 'Cherin <3',
-    link: 'src/assets/images/2.webp',
+    link: cherin,
   },
   {
     id: 2,
     title: 'No camera',
-    link: 'src/assets/images/3.webp',
+    link: noCamera,
   },
   {
     id: 3,
     title: 'Maçã goxtosinha',
-    link: 'src/assets/images/4.webp',
+    link: deliciusApple,
   },
   {
     id: 4,
     title: 'Lindjos',
-    link: 'src/assets/images/5.webp',
+    link: lindjos,
   },
   {
     id: 5,
     title: 'Eu e a gata em Sumé',
-    link: 'src/assets/images/6.webp',
+    link: sumePhoto,
   },
 ];
 
