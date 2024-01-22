@@ -11,7 +11,7 @@ import GameWinText from './GameWinText';
 export default function GameModalWin({ openModal, setOpenModal }: GameModalProp) {
   const { primaryColor } = useTheme();
   const [isChangePage, setIsChangePage] = useState(true);
-  const [showPhotos, setShowPhotos] = useState(true);
+  const [showPhotos, setShowPhotos] = useState(false);
 
   return (
     <Modal
